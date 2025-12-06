@@ -12,10 +12,10 @@ load_dotenv()
 # Get token from environment
 TOKEN = os.getenv("TOKEN")
 # Constants (keep these IDs updated to your setup)
-ADVENT_ROLE_ID = os.getenv("ADVENT_ROLE_ID")
-ADVENT_CHANNEL_ID = os.getenv("ADVENT_CHANNEL_ID")
+ADVENT_ROLE_ID = int(os.getenv("ADVENT_ROLE_ID"))
+ADVENT_CHANNEL_ID = int(os.getenv("ADVENT_CHANNEL_ID"))
 # debug channel on my own server
-DEBUG_CHANNEL_ID = os.getenv("DEBUG_CHANNEL_ID")
+DEBUG_CHANNEL_ID = int(os.getenv("DEBUG_CHANNEL_ID"))
 
 intents = discord.Intents.default()
 intents.guilds = True
@@ -97,7 +97,7 @@ async def step():
                         member = discord.utils.find(lambda m: m.name == person, guild.members)
                         contact = "A játékért keresd Kokit!"
                         if member:
-                            f"A játékért keresd őt: {member.mention}"
+                            contact = f"A játékért keresd őt: {member.mention}"
                     game_msg = f"{emoji} **{name}** ({vendor_text}) - {contact}"
                     messages.append(game_msg)
 
